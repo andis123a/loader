@@ -1,0 +1,16 @@
+# Compiled Object files
+*.o
+
+# Static libraries
+*.a
+
+# Executables and Binaries
+*.elf
+*.bin
+
+# Archives
+*.zip
+
+# Build output directories (adjust if your folder is named differently)
+fw_aio/
+lib/syscalls.asm

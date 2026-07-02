@@ -1,0 +1,77 @@
+#ifdef __5_05__
+#include "505.h"
+#else
+#ifdef __6_72__
+#include "672.h"
+#else
+#ifdef __7_00__
+#include "700.h"
+#else
+#ifdef __7_50__
+#include "750.h"
+#else
+#ifdef __8_00__
+#include "800.h"
+#else
+#ifdef __8_50__
+#include "850.h"
+#else
+#ifdef __9_00__
+#include "900.h"
+#else
+#ifdef __9_03__
+#include "903.h"
+#else
+#ifdef __9_60__
+#include "960.h"
+#else
+#ifdef __10_00__
+#include "1000.h"
+#else
+#ifdef __10_50__
+#include "1050.h"
+#else
+#ifdef __11_00__
+#include "1100.h"
+#else
+#ifdef __11_02__
+#include "1102.h"
+#else
+#ifdef __11_50__
+#include "1150.h"
+#else
+#ifdef __12_00__
+#include "1200.h"
+#else
+#ifdef __12_50__
+#include "1250.h"
+#else
+#ifdef __13_00__
+#include "1300.h"
+#else
+#ifdef __13_02__
+#include "1302.h"
+#else
+#ifdef __13_50__
+#include "1350.h"
+#else
+#error "unsupported firmware"
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif

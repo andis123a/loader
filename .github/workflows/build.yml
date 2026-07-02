@@ -1,0 +1,55 @@
+name: Build PS4 Linux Payloads
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch: # Allows the workflow to be invoked manually from the Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential clang llvm yasm zip
+
+      - name: Build PS4 payloads in linux
+        run: |
+          cd linux
+          make
+
+      - name: Count generated files
+        run: |
+          echo "Counting generated payloads in linux..."
+          
+          BIN_COUNT=$(find linux -name 'linux-*.bin' | wc -l)
+          ELF_COUNT=$(find linux -name 'linux-*.elf' | wc -l)
+          
+          echo "Found $BIN_COUNT linux-*.bin files."
+          echo "Found $ELF_COUNT linux-*.elf files."
+          
+          # Export counts to GitHub ENV
+          echo "BIN_COUNT=$BIN_COUNT" >> $GITHUB_ENV
+          echo "ELF_COUNT=$ELF_COUNT" >> $GITHUB_ENV
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p artifacts/bin artifacts/elf
+          
+          find linux -name 'linux-*.bin' -exec cp {} artifacts/bin/ \;
+          find linux -name 'linux-*.elf' -exec cp {} artifacts/elf/ \;
+
+      - name: Upload artifacts to GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: ps4-linux-payloads
+          path: |
+            artifacts/bin
+            artifacts/elf
