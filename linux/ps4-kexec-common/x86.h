@@ -130,7 +130,7 @@ static inline void outl(int port, unsigned int data)
 static inline unsigned int inl(int port)
 {
     unsigned int data;
-    asm volatile("inl %w1, %0" : "=a" (data) : "d" (port));
+    asm volatile("in %w1, %0" : "=a" (data) : "d" (port));
     return data;
 }
 
